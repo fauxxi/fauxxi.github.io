@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>FAUZI A SANJAYA</title>
+    <link rel="shortcut icon" href="img/favicon.ico">   
+   
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Montserrat+Subrayada:700|Rubik+Mono+One" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    
+    <!--  Animation css & jquery -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+     
+    
+    <script type="text/javascript" src="jquery.min.js"></script>
+        
+    <link rel="stylesheet" href="jquery-ui.css">
+    <script src="jquery-ui.js"></script>
+    
+<!--
+  <script type="text/javascript" src="jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+  <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.css">
+-->
+      
+    <style type="text/css">
+        
+        html, body{
+            height: 100%;
+            font-family: 'Droid Sans', sans-serif; 
+        }
+      
+        .navbar-nav{
+            float: right;
+            margin-right: 40px;
+            margin-left: 40px;
+            margin-top: 14px;
+            height: 50px;
+        }
+        
+        .navbar-brand{
+            margin: 0 auto;
+            align-items: center;
+        }
+        
+        .nav-item:hover{
+            border-bottom: 5px solid #dbd9d9;
+        }
+        
+        .nav-container{
+            vertical-align:middle;
+            border-bottom: 10px #db644c solid;
+            font-size: 130%;
+        }
+        
+        #cover{
+            background: #b0dde8 center center no-repeat;
+            background-size: cover;
+            color: white;
+            height: 85%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            margin-top: 60px;
+        }
+        
+        h1{
+            color: white;
+        }
+        
+        #cover-caption{
+            width: 100%;
+        }
+        
+        #changethewords{
+            width: 640px;
+            font-size: 150%;
+            text-align: left;
+            margin: 0 auto;
+        }
+        
+        #fauzi{
+            text-shadow: 5px 5px 0px rgba(43,49,61,1);
+            color: white;
+            font-size: 80px;
+            font-family: 'Montserrat Subrayada', sans-serif;
+        }
+        
+/*        TYPING ANIMATION*/
+        /* #typing{
+          color: white;
+          font-size: 130%;
+          margin: 10px 0 0 10px;
+          white-space: nowrap;
+          overflow: hidden;
+          width: 30em;
+          animation: type 4s steps(60, end); 
+        }
+        
+        #typing:nth-child(2){
+          animation: type2 8s steps(60, end);
+        }
+        
+        #typing{
+          color: white;
+          text-decoration: none;
+        }
+        
+        #typing-span{
+          animation: blink 1s infinite;
+        }
+        
+        @keyframes type{ 
+          from { width: 0; } 
+        } 
+        
+        @keyframes type2{
+          0%{width: 0;}
+          50%{width: 0;}
+          100%{ width: 100; } 
+        } 
+        
+        @keyframes blink{
+          to{opacity: .0;}
+        } */
+        
+/*        END OF TYPING ANIMATION*/
+        
+        .content-container{
+            text-align: center;
+            align-items: center;
+            background: #2B313D center center no-repeat;
+            background-size: cover;
+            height: 200%;
+        }
+        
+        .hidden{
+             opacity:0;
+        }
+        .visible{
+             opacity:1;
+        }
+        
+        #work{
+            margin-top: 80px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        
+        #work-content{
+            color: white;
+            font-size: 130%;
+        }
+        
+    </style>
+  
+  </head>
+  
+  <body>
+    
+    <div class="nav-container">
+        <nav class="navbar navbar-light navbar-fixed-top bg-faded">
+           <a class="navbar-brand post-brand" href="#">
+                <img src="img/mememe.png" width="40" alt="">
+           </a>
+            <div class="nav navbar-nav">
+                <a class="nav-item nav-link" href="#">ABOUT</a>
+                <a class="nav-item nav-link" href="#">WORK</a>
+                <a class="nav-item nav-link" href="#">HIRE ME!</a>
+            </div>
+        </nav>
+    </div>
+    
+
+    <div id="cover">
+        <div id="cover-caption">
+            <div class="container">
+                <img src="img/mememe.png" width="200px" class="img-fluid animated bounceIn" alt="Responsive image">
+                 <div class="col-sm-12 col-sm-offset-1">
+                    <h1 id="fauzi" class="animated fadeInUpBig">FAUZI <span class="hidden-xs-down">SANJAYA</span></h1>
+<!--                    <p id="typing">Hi, welcome to my portofolio website.<span id="typing-span">|</span></p>-->
+                     <div id="changethewords">
+                        I love
+                        <span id="1" style="display: none"><strong>Code.</strong></span>
+                        <span id="2" style="display: none"><strong>Design.</strong></span>
+                        <span id="3" style="display: none"><strong>Developing.</strong></span>
+                        <span id="4" style="display: none"><strong>YOU!</strong></span>
+                        <span class="hidden-sm-down" id="5" style="display: none">Yup, i'm a web <strong>developer</strong> &amp; <strong>designer</strong>.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-container"</div>
+        <div class="container">
+            <img id="work-icon" src="img/html.png" width="300" style="margin-top:80px" class="img-fluid post" alt="Responsive image">
+            <h1 id="work" class="work-post" >WORK</h1>
+            <p id="work-content" class="work-content-post">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti facere esse quasi ipsum minus aut quam, ipsam est pariatur saepe harum explicabo placeat. Optio earum, aspernatur molestias nostrum, nesciunt voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat est, in quis quam molestiae ullam atque veritatis itaque rerum cumque illo assumenda suscipit amet incidunt blanditiis laborum minus laboriosam vitae.</p>
+        </div>
+    </div>
+    
+    <div>
+        <img src="..." class="img-fluid" alt="Responsive image">
+        <img src="..." class="img-fluid" alt="Responsive image">
+        <img src="..." class="img-fluid" alt="Responsive image">
+        
+        
+    </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+    <script src="viewportchecker.js"></script>
+    
+    
+    <script type="text/javascript">
+        
+          $("#1").delay(1000).fadeIn(500, function(){
+              $(this).fadeOut(500, function(){
+                  $("#2").fadeIn(500, function(){
+                      $(this).fadeOut(500, function(){
+                          $("#3").fadeIn(500, function(){
+                             $(this).fadeOut(500, function(){
+                                 $("#4").fadeIn(500, function(){
+                                     $(this).delay(1000).fadeOut(500, function(){
+                                         $("#1").fadeIn(300, function(){
+                                             $("#5").fadeIn(500);
+                                         });
+                                     });
+                                 });
+                             }) ;
+                          });
+                      });
+                  });
+              });
+          });
+        
+        jQuery(document).ready(function() {
+            jQuery(".post").addClass("hidden").viewportChecker({
+                classToAdd: "visible animated bounceInUp",
+                offset: 100
+               });
+        });
+    
+        
+        jQuery(document).ready(function() {
+            jQuery(".work-post").addClass("hidden").viewportChecker({
+                classToAdd: "visible animated bounceInUp",
+                offset: 100
+               });
+        });
+        
+        jQuery(document).ready(function() {
+            jQuery(".work-content-post").addClass("hidden").viewportChecker({
+                classToAdd: "visible animated flipInX",
+                offset: 100
+               });
+        });
+    
+      
+    </script>
+    
+  </body>
+</html>
