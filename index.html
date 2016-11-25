@@ -31,7 +31,8 @@
         
         html, body{
             height: 100%;
-            font-family: 'Droid Sans', sans-serif; 
+            font-family: 'Droid Sans', sans-serif;
+            color: white;
         }
       
         .navbar-nav{
@@ -135,7 +136,17 @@
             align-items: center;
             background: #2B313D center center no-repeat;
             background-size: cover;
-            height: 200%;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .content-container-2{
+            text-align: center;
+            align-items: center;
+            background: #e0e0e0 center center no-repeat;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
         }
         
         .hidden{
@@ -145,19 +156,58 @@
              opacity:1;
         }
         
-        #work{
-            margin-top: 80px;
+        #about, #work, #sayhi{
+            padding-top: 150px;
             margin-bottom: 30px;
             font-weight: bold;
         }
         
         #work-content{
-            color: white;
-            font-size: 130%;
+            color: #e0e0e0;
+            font-size: 140%
+        }
+        
+        #work-content-neg{
+            color: #2B313D;
+            font-size: 140%;
         }
       
-        #image-work-container{
+        /* #image-work-container{
             width: 100%;
+            
+        }
+        
+        #work-paragraph{
+            width: 30%;
+            float:left;
+            text-align: left;
+            font-size: 130%;
+        }
+        
+        #work-detail{
+            width: 30%;
+            float:left;
+            text-align: left;
+        } */
+        
+        #brand-icon-id{
+            display: none;
+        }
+        
+        #nav-cover{
+            
+        }
+        
+        #mailto{
+            text-decoration: none;
+            color: #e0e0e0;
+        }
+        
+        .soc{
+            margin: 0 50px;
+            margin-top: 200px;
+            border-radius: 50%;
+            width: 100px;
             
         }
         
@@ -165,49 +215,84 @@
   
   </head>
   
-  <body>
+  <body data-spy="scroll" data-target=".navbar" data-offset="50">
     
+    <div id="nav-cover">
+    <div class="container">
     <div class="nav-container">
         <nav class="navbar navbar-light navbar-fixed-top bg-faded">
-           <a class="navbar-brand post-brand" href="#">
+           <a id="brand-icon-id" class="navbar-brand post-brand" href="#nav-cover">
                 <img src="http://i.imgur.com/pfdQxlN.png" width="40" alt="">
            </a>
             <div class="nav navbar-nav">
-                <a class="nav-item nav-link" href="#">ABOUT</a>
-                <a class="nav-item nav-link" href="#">WORK</a>
-                <a class="nav-item nav-link" href="#">HIRE ME!</a>
+                <a class="nav-item nav-link" href="#about">ABOUT</a>
+                <a class="nav-item nav-link" href="#work">WORK</a>
+                <a class="nav-item nav-link" href="#sayhi">SAY HI!</a>
             </div>
         </nav>
+    </div>
+    </div>
     </div>
     
 
     <div id="cover">
         <div id="cover-caption">
             <div class="container">
-                <img src="http://i.imgur.com/pfdQxlN.png" width="200px" class="img-fluid animated bounceIn" alt="Responsive image">
+                <img src="http://i.imgur.com/pfdQxlN.png" width="200px" class="img-fluid animated infinite pulse" alt="Responsive image">
                  <div class="col-sm-12 col-sm-offset-1">
-                    <h1 id="fauzi" class="animated fadeInUpBig">FAUZI <span class="hidden-xs-down">SANJAYA</span></h1>
+                    <h1 id="fauzi" class="animated bounceInDown">FAUZI <span class="hidden-xs-down">SANJAYA</span></h1>
 <!--                    <p id="typing">Hi, welcome to my portofolio website.<span id="typing-span">|</span></p>-->
-                     <div id="changethewords">
+                     <div class ="animated infinite pulse" id="changethewords">
                         I love
                         <span id="1" style="display: none"><strong>Code.</strong></span>
                         <span id="2" style="display: none"><strong>Design.</strong></span>
                         <span id="3" style="display: none"><strong>Developing.</strong></span>
                         <span id="4" style="display: none"><strong>YOU!</strong></span>
-                        <span class="hidden-sm-down" id="5" style="display: none">Yup, i'm a web <strong>developer</strong> &amp; <strong>designer</strong>.</span>
+<!--                        <span class="hidden-sm-down" id="5" style="display: none">Yup, i'm a web <strong>developer</strong> &amp; <strong>designer</strong>.</span>-->
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <div class="content-container"</div>
+    <div class="content-container">
         <div class="container">
-            <img id="work-icon" src="http://i.imgur.com/fDydD5M.png" width="300" style="margin-top:80px" class="img-fluid post" alt="Responsive image">
-            <h1 id="work" class="work-post" >WORK</h1>
-          <div id="image-work-container">
+            <h1 id="about" class="work-post" >Who am i?</h1>
+            <p id="work-content" class="work-content-post">My name is <u>Fauzi Arif Sanjaya</u>. A computer engineering student who's interested in web design &amp; development, design graphic and photography. I'm addicted to pizza and tea. And i love archery!</p>
+            
+            
+          <!-- <div id="image-work-container">
             <img src="http://i.imgur.com/H3YYfN0.png" width="500px" style="float: left;" class="img-fluid" alt="Responsive image">
-          </div>
+            <h2>beta.iwkz.de</h2>
+              <div id="work-paragraph">
+            <p>This is my first and latest work i've done, but... it's also not finished yet with the front-end for some reasons, but i'll finished it ASAP! Since i'm new to the web development, so i need a time to do this.</p>
+            <p>The design of this website is to make it simple, minimal and responsive.</p>
+              </div>
+              <div id="work-detail">
+            <h3>Services</h3>
+            <ul>
+                <li>Responsive Web Design</li>
+                <li>HTML, CSS, BOOTSTRAP 4, jQuery</li>
+            </ul>
+              </div>
+          </div> -->
+        </div>
+    </div>
+    
+    <div class="content-container-2">
+        <h1 id="work" class="work-post" style="color: #2B313D;">What do i do?</h1>
+        <p id="work-content-neg" class="work-content-post" >Front-End web development. Graphic design.</p>
+    </div>
+    
+    <div class="content-container-2" style="background-color:#2B313D;">
+        <h1 id="sayhi" class="work-post" style="color: #e0e0e0;">To say hi, <u><strong><a id="mailto" href="mailto:fauziarifsanjaya@yahoo.com">Mail</a></strong></u> me!</h1>
+        <p id="work-content" class="work-content-post" ></p>
+        <div class="container">
+            <a href="https://www.facebook.com/fauziarifs"><img src="http://i.imgur.com/L7R4j8G.png" class="img-fluid soc post" alt="Responsive image"></a>
+            <a href="https://twitter.com/areeveisme"><img src="http://i.imgur.com/N0mR293.png" class="img-fluid soc post" alt="Responsive image"></a>
+            <a href="https://www.instagram.com/fauzifilm/"><img src="http://i.imgur.com/Qnwu31u.png" class="img-fluid soc post" alt="Responsive image"></a>
+            <a href="https://github.com/fauzisan"><img src="http://i.imgur.com/nrdEncK.png" class="img-fluid soc post" alt="Responsive image"></a>
+            
         </div>
     </div>
 
@@ -240,7 +325,7 @@
                   });
               });
           });
-        
+    
         jQuery(document).ready(function() {
             jQuery(".post").addClass("hidden").viewportChecker({
                 classToAdd: "visible animated bounceInUp",
@@ -262,7 +347,51 @@
                 offset: 100
                });
         });
-    
+        
+        
+        $(function() {
+
+          $(window).scroll(function() {
+            var x = $(window).scrollTop();
+
+            if (x >= $("#cover").height()) {
+              $("#brand-icon-id").fadeIn();
+            } else {
+              $("#brand-icon-id").fadeOut();
+            }
+
+          });
+
+        });
+        
+       $(document).ready(function(){
+          // Add smooth scrolling to all links
+          $("a").on('click', function(event) {       
+
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+              // Prevent default anchor click behavior
+              event.preventDefault();
+
+              // Store hash
+              var hash = this.hash;
+
+              // Using jQuery's animate() method to add smooth page scroll
+              // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+              $('html, body').animate({
+                scrollTop: $(hash).offset().top
+              }, 800, function(){
+
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+              });
+            } // End if
+              
+          });
+        });
+        
+        
+
       
     </script>
     
