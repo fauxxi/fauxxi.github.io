@@ -34,6 +34,11 @@
             font-family: 'Droid Sans', sans-serif;
             color: white;
         }
+        
+        body{
+            width: auto;
+            overflow-x: hidden;
+        }
       
         .navbar-nav{
             float: right;
@@ -91,45 +96,6 @@
             font-family: 'Montserrat Subrayada', sans-serif;
         }
         
-/*        TYPING ANIMATION*/
-        /* #typing{
-          color: white;
-          font-size: 130%;
-          margin: 10px 0 0 10px;
-          white-space: nowrap;
-          overflow: hidden;
-          width: 30em;
-          animation: type 4s steps(60, end); 
-        }
-        
-        #typing:nth-child(2){
-          animation: type2 8s steps(60, end);
-        }
-        
-        #typing{
-          color: white;
-          text-decoration: none;
-        }
-        
-        #typing-span{
-          animation: blink 1s infinite;
-        }
-        
-        @keyframes type{ 
-          from { width: 0; } 
-        } 
-        
-        @keyframes type2{
-          0%{width: 0;}
-          50%{width: 0;}
-          100%{ width: 100; } 
-        } 
-        
-        @keyframes blink{
-          to{opacity: .0;}
-        } */
-        
-/*        END OF TYPING ANIMATION*/
         
         .content-container{
             text-align: center;
@@ -145,7 +111,7 @@
             align-items: center;
             background: #e0e0e0 center center no-repeat;
             background-size: cover;
-            height: 100%;
+            height: 120%;
             width: 100%;
         }
         
@@ -172,23 +138,6 @@
             font-size: 140%;
         }
       
-        /* #image-work-container{
-            width: 100%;
-            
-        }
-        
-        #work-paragraph{
-            width: 30%;
-            float:left;
-            text-align: left;
-            font-size: 130%;
-        }
-        
-        #work-detail{
-            width: 30%;
-            float:left;
-            text-align: left;
-        } */
         
         #brand-icon-id{
             display: none;
@@ -205,11 +154,76 @@
         
         .soc{
             margin: 0 50px;
-            margin-top: 200px;
             border-radius: 50%;
             width: 100px;
             
         }
+        
+        #sayhi{
+            margin-bottom: 100px;
+        }
+        
+/*        waving hand*/
+        #hand {
+
+              margin-top: 150px;
+            margin-bottom: -50px;
+
+            -webkit-transform: rotate(-40deg);
+            -moz-transform: rotate(-40deg);
+            -o-transform: rotate(-40deg);
+            -ms-transform: rotate(-40deg);
+            transform: rotate(-40deg);
+            -webkit-animation: wink 0.5s alternate infinite; /* Safari 4+ */
+              -moz-animation:    wink 0.5s alternate infinite; /* Fx 5+ */
+              -o-animation:      wink 0.5s alternate infinite; /* Opera 12+ */
+              animation:         wink 0.5s alternate infinite; /* IE 10+, Fx 29+ */
+            -webkit-transform-origin: 50% 100%;
+            -moz-transform-origin: 50% 100%;
+            -o-transform-origin: 50% 100%;
+            -ms-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+            -webkit-animation-timing-function: ease; /* Chrome, Safari, Opera */
+            animation-timing-function: ease;
+
+            }
+
+            /* Chrome, Safari, Opera */ 
+            @-webkit-keyframes wink {
+                0% {-webkit-transform: rotate(-40deg);
+            -moz-transform: rotate(-40deg);
+            -o-transform: rotate(-40deg);
+            -ms-transform: rotate(-40deg);
+
+            }
+
+            100% {-webkit-transform: rotate(40deg);
+            -moz-transform: rotate(40deg);
+            -o-transform: rotate(40deg);
+            -ms-transform: rotate(40deg);
+            transform: rotate(40deg);}
+
+            } 
+
+            /* Standard syntax */ 
+            @keyframes wink {
+
+
+                0% {-webkit-transform: rotate(-40deg);
+            -moz-transform: rotate(-40deg);
+            -o-transform: rotate(-40deg);
+            -ms-transform: rotate(-40deg);
+            transform: rotate(-40deg);
+            }
+
+
+            100% {-webkit-transform: rotate(40deg);
+            -moz-transform: rotate(40deg);
+            -o-transform: rotate(40deg);
+            -ms-transform: rotate(40deg);
+            transform: rotate(40deg);}
+
+            }
         
     </style>
   
@@ -227,7 +241,7 @@
             <div class="nav navbar-nav">
                 <a class="nav-item nav-link" href="#about">ABOUT</a>
                 <a class="nav-item nav-link" href="#work">WORK</a>
-                <a class="nav-item nav-link" href="#sayhi">SAY HI!</a>
+                <a class="nav-item nav-link" href="#bott">SAY HI!</a>
             </div>
         </nav>
     </div>
@@ -259,23 +273,6 @@
         <div class="container">
             <h1 id="about" class="work-post" >Who am i?</h1>
             <p id="work-content" class="work-content-post">Hi! My name is <u>Fauzi Arif Sanjaya</u>. A computer engineering student who's interested in web design &amp; development, design graphic and photography. I'm addicted to pizza and tea. And i love archery!</p>
-            
-            
-          <!-- <div id="image-work-container">
-            <img src="http://i.imgur.com/H3YYfN0.png" width="500px" style="float: left;" class="img-fluid" alt="Responsive image">
-            <h2>beta.iwkz.de</h2>
-              <div id="work-paragraph">
-            <p>This is my first and latest work i've done, but... it's also not finished yet with the front-end for some reasons, but i'll finished it ASAP! Since i'm new to the web development, so i need a time to do this.</p>
-            <p>The design of this website is to make it simple, minimal and responsive.</p>
-              </div>
-              <div id="work-detail">
-            <h3>Services</h3>
-            <ul>
-                <li>Responsive Web Design</li>
-                <li>HTML, CSS, BOOTSTRAP 4, jQuery</li>
-            </ul>
-              </div>
-          </div> -->
         </div>
     </div>
     
@@ -284,15 +281,16 @@
         <p id="work-content-neg" class="work-content-post" >Front-End web development. Graphic design.</p>
     </div>
     
-    <div class="content-container-2" style="background-color:#2B313D;">
+    <div class="content-container-2" id="bott" style="background-color:#2B313D;">
+       <img id="hand" src="https://dl.dropboxusercontent.com/u/18908834/hand.png" class="img-fluid" style="width:100px" alt="Responsive image">
         <h1 id="sayhi" class="work-post" style="color: #e0e0e0;">To say hi, <u><strong><a id="mailto" href="mailto:fauziarifsanjaya@yahoo.com">Mail</a></strong></u> me!</h1>
         <p id="work-content" class="work-content-post" ></p>
+        
         <div class="container">
             <a href="https://www.facebook.com/fauziarifs"><img src="http://i.imgur.com/L7R4j8G.png" class="img-fluid soc post" alt="Responsive image"></a>
             <a href="https://twitter.com/areeveisme"><img src="http://i.imgur.com/N0mR293.png" class="img-fluid soc post" alt="Responsive image"></a>
             <a href="https://www.instagram.com/fauzifilm/"><img src="http://i.imgur.com/Qnwu31u.png" class="img-fluid soc post" alt="Responsive image"></a>
             <a href="https://github.com/fauzisan"><img src="http://i.imgur.com/nrdEncK.png" class="img-fluid soc post" alt="Responsive image"></a>
-            
         </div>
     </div>
 
