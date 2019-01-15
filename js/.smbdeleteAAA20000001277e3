@@ -1,0 +1,226 @@
+window.onload = function () {
+    if (Enabler.isInitialized()) {
+        enablerInitHandler();
+    } else {
+        Enabler.addEventListener(studio.events.StudioEvent.INIT, enablerInitHandler);
+    }
+}
+
+function enablerInitHandler() {
+    if (Enabler.isPageLoaded()) {
+        politeInit();
+    } else {
+        Enabler.addEventListener(studio.events.StudioEvent.PAGE_LOADED, politeInit);
+    }
+}
+
+function politeInit() {
+    controller.init();
+}
+
+function exitHandler(e) {
+    player.pauseVideo();
+    Enabler.exit('Exit', "http://video.disney.de/sehen/die-schoene-und-das-biest-offizieller-trailer-541439ef55a51bf9aeb3ffba?ex_cmp=dis_de:movies:bea-la-R-plex-p:0316");
+}
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('yt-player', {
+        //height: '228',
+        height: '315',
+        //width: '405',
+        width: '560',
+        videoId: 'pX1Gxc1TgmI',
+        playerVars: {
+            autoplay: 1,
+            showinfo: 0
+        },
+        events: {
+            'onReady': onPlayerReady
+        }
+    });
+    player.addEventListener('onStateChange', onPlayerStateChange);
+}
+
+function onPlayerReady(event) {
+    player.pauseVideo();
+    player.mute();
+
+    playerInterval = setInterval(playVideo, 100);
+}
+
+function playVideo() {
+  if (playerGo) {
+    playerGo = false;
+    clearInterval(playerInterval);
+
+    document.getElementById('yt-player').className = 'show';
+    player.playVideo();
+  }
+}
+
+var player;
+var playerGo = false;
+var playerInterval = null;
+var firstQ = false;
+var middle = false;
+var thirdQ = false;
+var end = false;
+var interval = setInterval(onPlayProgress, 1000);
+var isPlaying = false;
+var ended = false;
+
+
+function onPlayProgress() {
+    //console.log(player);
+    if (player && player.getCurrentTime) {
+        if (!firstQ) {
+            if (player.getCurrentTime() / player.getDuration() > 0.25) {
+                firstQ = true;
+                Enabler.counter('YouTube first quartile');
+            }
+        }
+        if (!middle) {
+            if (player.getCurrentTime() / player.getDuration() > 0.5) {
+                middle = true;
+                Enabler.counter('YouTube midpoint');
+            }
+        }
+        if (!thirdQ) {
+            if (player.getCurrentTime() / player.getDuration() > 0.75) {
+                thirdQ = true;
+                Enabler.counter('YouTube third quartile');
+            }
+        }
+        if (!end) {
+            if (player.getCurrentTime() / player.getDuration() >= 1) {
+                end = true;
+                Enabler.counter('YouTube complete');
+            }
+        }
+    }
+}
+
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING) {
+        if (!isPlaying) {
+            isPlaying = true;
+            Enabler.counter('YouTube play');
+            interval = setInterval(onPlayProgress, 1000);
+            if (ended) {
+                ended = false;
+                Enabler.counter('YouTube replayed');
+            }
+        }
+    }
+    if (event.data == YT.PlayerState.PAUSED) {
+        if (isPlaying) {
+            isPlaying = false;
+            clearInterval(interval);
+            Enabler.counter('YouTube pause');
+        }
+    }
+    if (event.data == YT.PlayerState.ENDED) {
+        if (isPlaying) {
+            isPlaying = false;
+            ended = true;
+            Enabler.counter('YouTube end');
+        }
+    }
+}
+
+function onMouseOver() {
+    document.getElementsByClassName('cta-over')[0].classList.add('on');
+}
+
+function onMouseOut() {
+    document.getElementsByClassName('cta-container')[0].classList.remove('on');
+}
+
+function onClose(event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    player.pauseVideo();
+    Enabler.reportManualClose();
+    Enabler.close();
+}
+
+function autoClose() {
+    player.pauseVideo();
+    Enabler.close();
+}
+
+document.getElementsByClassName('close')[0].addEventListener('click', onClose, false);
+document.getElementsByClassName('ad')[0].addEventListener('click', exitHandler, false);
+
+var controller = {
+    init: function () {
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+        controller.c = document.getElementById("container");
+        controller.i = 0;
+        controller.ia = [];
+
+        controller.ia.push('img/bg.jpg');
+        controller.ia.push('img/bg2.jpg');
+        controller.ia.push('img/sprites.png');
+
+        controller.loadImages();
+    },
+
+    startAd: function () {
+        //controller.c.innerHTML = controller.s;
+        var a = controller.c.getElementsByClassName('anim');
+        for (var i = 0; i < a.length; i++) {
+            a[i].style.mozAnimationPlayState = "running";
+            a[i].style.webkitAnimationPlayState = "running";
+            a[i].style.animationPlayState = "running";
+        }
+        a = controller.c.getElementsByTagName('img');
+        for (var i = 0; i < a.length; i++) {
+            a[i].src = a[i].getAttribute('data-src');
+        }
+         window.addEventListener('resize', resize, false);
+         resize();
+        controller.c.style.display = "block";
+        document.getElementById("ad").className = "ad start";
+
+        setTimeout(autoClose, 20000);
+        setTimeout(function() {
+          playerGo = true;
+        }, 3000);
+    },
+    loadImages: function () {
+        for (var i = 0; i < controller.ia.length; i++) {
+            var im = new Image();
+            im.onload = controller.imageLoaded;
+            im.src = controller.ia[i];
+        }
+    },
+    imageLoaded: function () {
+        controller.i++;
+        if (controller.i == controller.ia.length) {
+            controller.startAd();
+        }
+    }
+};
+
+function resize() {
+    var a = document.getElementsByClassName('resize');
+    var r = 1;
+    if(window.innerHeight < 850) {
+        r = window.innerHeight / 850;
+    }
+    for (var i = 0; i < a.length; i++) {
+        a[i].style.transform = 'scale(' + r + ')';
+    }
+    document.getElementsByTagName('body')[0].className = isWidescreen() ? 'widescreen' : '';
+}
+
+function isWidescreen() {
+  return (window.innerWidth / window.innerHeight) > 1.98;
+}

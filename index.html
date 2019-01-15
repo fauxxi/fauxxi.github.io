@@ -1,1 +1,85 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name="theme-color" content="#000000"><link rel="manifest" href="/manifest.json"><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"><title>IWKZ e.V.</title><link href="/static/css/main.37b5fec9.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script type="text/javascript" src="/static/js/main.1b693ae0.js"></script></body></html>
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Image Puzzle</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/main.css">
+
+		<script>
+
+		//window.onload =
+
+		window.onload = function(){
+			breathingAlgorithm.run({'runjQuery' : true});
+
+			if(typeof AudioContext != "undefined" || typeof webkitAudioContext != "undefined") {
+			   var resumeAudio = function() {
+			      if(typeof g_WebAudioContext == "undefined" || g_WebAudioContext == null) return;
+			      if(g_WebAudioContext.state == "suspended") g_WebAudioContext.resume();
+			      document.removeEventListener("click", resumeAudio);
+			   };
+			   document.addEventListener("click", resumeAudio);
+			}
+		}
+
+		console.log("hohoho");
+
+
+
+			var breathingEvents = {
+				// fireOffEvent : function(){
+				// 	document.getElementById('display-parameters').innerHTML = "off event fired";
+				// },
+				//
+				// fireOnEvent : function(){
+				// 	document.getElementById('display-parameters').innerHTML = "on event fired";
+				//
+				// },
+
+				offRunning : function(){
+					//document.getElementById('display-running').innerHTML = "off event runing";
+	        document.querySelector('#kite-rope').style.bottom = 0 +"px";
+					document.querySelector('#rope').style.transform = "rotate(-"+ 0 + "deg)";
+					document.querySelector('#rope').style.top = 600 + "px";
+					console.log("haha");
+				},
+
+				onRunning : function(){
+					//document.getElementById('display-running').innerHTML = "on event runing";
+	        document.querySelector('#kite-rope').style.bottom = 1000 +"px";
+					document.querySelector('#rope').style.transform = "rotate(-"+ 20 + "deg)";
+					document.querySelector('#rope').style.top = 750 + "px";
+					console.log("hihi");
+				}
+
+			}
+
+		  // function clicked(){
+			//     breathingAlgorithm.run({'runjQuery' : true});
+			// 	//breathingAlgorithm.run();
+			// }
+
+
+
+		</script>
+	</head>
+
+	<body>
+		<div id="bg-container">
+			<!-- <div style="width:400px; margin:50px auto;">
+				<div id="display-parameters" style="margin-top:50px; font-size:25px; color:#ffffff;background:#000;padding:20px; width:300px;text-align:center;"></div>
+				<div id="display-running" style="margin-top:50px; font-size:25px; color:#ffffff;background:#000;padding:20px; width:300px;text-align:center;"></div>
+			</div> -->
+			<div id="kite-rope">
+				<img id="rope" src="./img/rope.png" alt="">
+				<img id="kite" src="./img/kite.png" alt="">
+			</div>
+
+		</div>
+
+
+		<script src="./js/main.js"></script>
+	</body>
+
+</html>
