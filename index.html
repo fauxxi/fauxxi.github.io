@@ -33,12 +33,12 @@
     />
     <style>
       .pac-card {
-        margin: 10px 10px 0 0;
+        margin: 20px 20px 0 20px;
         padding: 20px;
         border-radius: 2px 0 0 2px;
         outline: none;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: rgba(255, 255, 255, 0.85);
         font-family: Roboto;
         width: 30%;
         min-width: 300px;
@@ -465,7 +465,7 @@
           ]
         });
 
-        map.controls[google.maps.ControlPosition.RIGHT_TOP].push(card);
+        map.controls[google.maps.ControlPosition.LEFT_TOP].push(card);
 
         // Create the autocomplete object, restricting the search predictions to
         // geographical location types.
