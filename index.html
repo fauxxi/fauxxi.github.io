@@ -1,568 +1,217 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Place Autocomplete Address Form</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
-      charset="utf-8"
-    ></script>
-    <meta charset="utf-8" />
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.6.10/lottie.js" type="text/javascript"></script>
+    <title>Advalyze</title>
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      * {
-        text-decoration: none;
-        box-sizing: border-box;
-      }
-    </style>
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
-    />
-    <style>
-      .pac-card {
-        margin: 20px 20px 0 20px;
-        padding: 20px;
-        border-radius: 2px 0 0 2px;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: rgba(255, 255, 255, 0.85);
-        font-family: Roboto;
-        width: 30%;
-        min-width: 300px;
-      }
-
-      #map #infowindow-content {
-        display: inline;
-      }
-
-      #infowindow-content {
-        display: none;
-      }
-
-      #pac-container {
-      }
-
-      .pac-controls {
-        display: block;
-        padding: 5px 11px;
-      }
-
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-
-      #autocomplete {
-        width: 100%;
-      }
-
-      #pac-input:focus {
-        /* border-color: #4d90fe; */
-      }
-
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 30px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-
-      .flex-container {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-around;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-      }
-
-      .field {
-        border-bottom: 2px solid #adadad;
-        position: relative;
-        margin: 30px 0;
-      }
-
-      .field input {
-        font-size: 15px;
-        color: #333;
-        border: none;
-        width: 100%;
-        outline: none;
-        background: none;
-        padding: 0 5px;
-        height: 30px;
-      }
-
-      .field span::before {
-        content: attr(data-placeholder);
-        position: absolute;
-        top: 50%;
-        left: 5px;
-        color: grey;
-        transform: translateY(-50%);
-        transition: 0.5s;
-      }
-
-      .field span::after {
-        content: '';
-        position: absolute;
-        top: 30px;
-        left: 0;
-        width: 0%;
-        height: 2px;
-        background: linear-gradient(120deg, #f093fb, #f5576c);
-        transition: 0.5s;
-      }
-
-      .focus + span::before {
-        top: -3px;
-      }
-      .focus + span::after {
-        width: 100%;
-      }
-
-      .logbtn {
-        display: block;
-        float: right;
-        width: 50%;
-        height: 50px;
-        border: none;
-        background: linear-gradient(120deg, #f093fb, #f5576c, #f093fb);
-        background-size: 200%;
-        color: #fff;
-        outline: none;
-        cursor: pointer;
-        transition: 0.5s;
-        border-radius: 5px;
-      }
-
-      .logbtn:hover {
-        background-position: right;
-      }
-
-      .bottom-text {
-        margin-top: 70px;
-        text-align: center;
-        font-size: 11px;
-        color: grey;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="pac-card" id="pac-card">
-      <div><h1>Geben Sie Ihre Postanschrift ein.</h1></div>
-      <form action="https://formspree.io/xyynyaew" method="POST">
-        <div class="flex-container">
-          <div>
-            <div class="field">
-              <input type="text" id="" name="Name" required />
-              <span data-placeholder="Name"></span>
-            </div>
-
-            <div class="field">
-              <input type="email" id="" name="Email" required />
-              <span data-placeholder="Email"></span>
-            </div>
-            <div class="field">
-              <input
-                type="text"
-                id="autocomplete"
-                type="text"
-                onkeypress="return noenter()"
-                required
-                placeholder=""
-              />
-              <span data-placeholder="Adresse"></span>
-            </div>
-          </div>
-          <div>
-            <div class="field">
-              <input
-                type="text"
-                id="route"
-                name="Straße"
-                required
-                disabled="true"
-              />
-              <span data-placeholder="Straße"></span>
-            </div>
-
-            <div class="field">
-              <input
-                type="text"
-                id="street_number"
-                name="Hausnummer"
-                required
-                disabled="true"
-              />
-              <span data-placeholder="Hausnummer"></span>
-            </div>
-
-            <div class="field">
-              <input
-                type="text"
-                id="locality"
-                name="Stadt"
-                required
-                disabled="true"
-              />
-              <span data-placeholder="Stadt"></span>
-            </div>
-
-            <div class="field">
-              <input
-                type="text"
-                id="postal_code"
-                name="PLZ"
-                required
-                disabled="true"
-              />
-              <span data-placeholder="PLZ"></span>
-            </div>
-
-            <div class="field">
-              <input
-                type="text"
-                id="country"
-                name="Land"
-                required
-                disabled="true"
-              />
-              <span data-placeholder="Land"></span>
-            </div>
-          </div>
-        </div>
-
-        <button class="logbtn" type="submit"><strong>ABSENDEN</strong></button>
-        <div class="bottom-text">
-          <i>Keine Sorge! Ihre Daten sind geschutzt.</i>
-        </div>
-      </form>
-    </div>
-    <div id="map"></div>
-    <div id="infowindow-content">
-      <span id="place-name" class="title"></span><br />
-      <span id="place-address"><strong></strong></span>
-    </div>
-    <script>
-      var placeSearch, autocomplete, map;
-
-      var componentForm = {
-        street_number: 'short_name',
-        route: 'long_name',
-        locality: 'long_name',
-        country: 'long_name',
-        postal_code: 'short_name'
-      };
-
-      function initAutocomplete() {
-        var card = document.getElementById('pac-card');
-
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: { lat: 51.5167, lng: 9.9167 },
-          zoom: 6,
-          disableDefaultUI: true,
-          styles: [
-            {
-              elementType: 'geometry',
-              stylers: [
-                {
-                  color: '#f5f5f5'
-                }
-              ]
-            },
-            {
-              elementType: 'labels.icon',
-              stylers: [
-                {
-                  visibility: 'off'
-                }
-              ]
-            },
-            {
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#616161'
-                }
-              ]
-            },
-            {
-              elementType: 'labels.text.stroke',
-              stylers: [
-                {
-                  color: '#f5f5f5'
-                }
-              ]
-            },
-            {
-              featureType: 'administrative.land_parcel',
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#bdbdbd'
-                }
-              ]
-            },
-            {
-              featureType: 'poi',
-              elementType: 'geometry',
-              stylers: [
-                {
-                  color: '#eeeeee'
-                }
-              ]
-            },
-            {
-              featureType: 'poi',
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#757575'
-                }
-              ]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'geometry',
-              stylers: [
-                {
-                  color: '#e5e5e5'
-                }
-              ]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#9e9e9e'
-                }
-              ]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry',
-              stylers: [
-                {
-                  color: '#ffffff'
-                }
-              ]
-            },
-            {
-              featureType: 'road.arterial',
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#757575'
-                }
-              ]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'geometry',
-              stylers: [
-                {
-                  color: '#dadada'
-                }
-              ]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#616161'
-                }
-              ]
-            },
-            {
-              featureType: 'road.local',
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#9e9e9e'
-                }
-              ]
-            },
-            {
-              featureType: 'transit.line',
-              elementType: 'geometry',
-              stylers: [
-                {
-                  color: '#e5e5e5'
-                }
-              ]
-            },
-            {
-              featureType: 'transit.station',
-              elementType: 'geometry',
-              stylers: [
-                {
-                  color: '#eeeeee'
-                }
-              ]
-            },
-            {
-              featureType: 'water',
-              elementType: 'geometry',
-              stylers: [
-                {
-                  color: '#c9c9c9'
-                }
-              ]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#9e9e9e'
-                }
-              ]
-            }
-          ]
-        });
-
-        map.controls[google.maps.ControlPosition.LEFT_TOP].push(card);
-
-        // Create the autocomplete object, restricting the search predictions to
-        // geographical location types.
-        autocomplete = new google.maps.places.Autocomplete(
-          document.getElementById('autocomplete'),
-          { types: ['geocode'] }
-        );
-
-        autocomplete.bindTo('bounds', map);
-
-        // Avoid paying for data that you don't need by restricting the set of
-        // place fields that are returned to just the address components.
-        autocomplete.setFields(['address_components', 'geometry', 'name']);
-
-        // When the user selects an address from the drop-down, populate the
-        // address fields in the form.
-        var infowindow = new google.maps.InfoWindow({
-          pixelOffset: new google.maps.Size(0, -20)
-        });
-        var infowindowContent = document.getElementById('infowindow-content');
-        infowindow.setContent(infowindowContent);
-        var marker = new google.maps.Marker({
-          map: map,
-          anchorPoint: new google.maps.Point(0, -29),
-          animation: google.maps.Animation.DROP
-        });
-
-        function toggleBounce() {
-          if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-          } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-          }
+        * {
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
         }
 
-        $('.field input').on('focus', function() {
-          $(this).addClass('focus');
-        });
+        #bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: yellow;
+        }
 
-        $('.field input').on('blur', function() {
-          if ($(this).val() == '') $(this).removeClass('focus');
-        });
+        #lottie-bg {
+            height: 100vh;
+            width: 100vw;
+        }
 
-        autocomplete.addListener('place_changed', function() {
-          // Get the place details from the autocomplete object.
-          if ($('.field input').val() == '') $(this).removeClass('focus');
-          var place = autocomplete.getPlace();
+        .logo-container {
+            position: relative;
+            cursor: pointer;
+        }
 
-          infowindow.close();
-          marker.setVisible(false);
+        #lottie {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 0px;
+            left: 0px;
+        }
 
-          if (!place.geometry) {
-            // User entered the name of a Place that was not suggested and
-            // pressed the Enter key, or the Place Details request failed.
-            window.alert(
-              "No details available for input: '" +
-                place.name +
-                "', please type only the address!"
-            );
-            return;
-          }
+        #wrapper {
+            width: 90%;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            opacity: 0;
+            transition: all 350ms ease;
+            /* transform: translateY(20px); */
+        }
 
-          // If the place has a geometry, then present it on a map.
-          if (place.geometry.viewport) {
-            map.fitBounds(place.geometry.viewport);
-          } else {
-            map.setCenter(place.geometry.location);
-            map.setZoom(17); // Why 17? Because it looks good.
-          }
-          marker.addListener('click', toggleBounce);
-          marker.setPosition(place.geometry.location);
-          marker.setVisible(true);
+        .container {
+            display: flex;
+            justify-content: space-between;
+            height: 13vh;
+        }
 
-          marker.addListener('click', function() {
-            infowindow.open(map, marker);
-          });
+        ul {
+            list-style: none;
+            margin-top: 10px;
+        }
 
-          var address = '';
-          if (place.address_components) {
-            address = [
-              (place.address_components[1] &&
-                place.address_components[1].short_name) ||
-                '',
-              (place.address_components[0] &&
-                place.address_components[0].short_name) ||
-                '',
-              (place.address_components[2] &&
-                place.address_components[2].short_name) ||
-                ''
-            ].join(' ');
-          }
+        ul li {
+            display: inline-block;
+            cursor: pointer;
+            padding: 10px;
+            padding-bottom: 2px;
+            margin: 10px;
+            transition: all 200ms ease;
+        }
 
-          infowindowContent.children['place-address'].textContent = address;
-          infowindow.open(map, marker);
+        ul li:hover {
+            border-bottom: 2px solid black;
+        }
 
-          for (var component in componentForm) {
-            document.getElementById(component).value = '';
-            document.getElementById(component).disabled = false;
-          }
+        .contact {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            text-align: center;
+        }
 
-          // Get each component of the address from the place details,
-          // and then fill-in the corresponding field on the form.
-          for (var i = 0; i < place.address_components.length; i++) {
-            var addressType = place.address_components[i].types[0];
-            if (componentForm[addressType]) {
-              var val = place.address_components[i][componentForm[addressType]];
-              document.getElementById(addressType).value = val;
-              document.getElementById(addressType).classList.add('focus');
+        .contact-btn {
+            cursor: pointer;
+            padding: 7px 30px 7px 30px;
+            max-width: 200px;
+            text-align: center;
+            border-radius: 30px;
+            border: 2.5px solid black;
+            transition: all 200ms ease;
+            font-weight: bold;
+        }
+
+        .contact-btn:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .inverted {
+            background: #000;
+            transition: all 200ms ease;
+            color: #fff;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .inverted:hover {
+            color: #000;
+            background: transparent;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            text-align: center;
+            height: 87vh;
+        }
+
+        h1 {
+            font-family: 'Lato', sans-serif;
+            font-weight: bold;
+            font-size: 50pt;
+        }
+
+        h1:first-child {
+            margin-top: -50px;
+            margin-bottom: -50px;
+        }
+
+        p {
+            margin-bottom: 30px;
+        }
+
+        p:first-of-type {
+            margin-bottom: -15px;
+            margin-top: -20px;
+        }
+    </style>
+</head>
+
+<body style="margin: 0px;height: 100%; width: 100%; padding: 0;">
+
+    <div id="bg">
+        <div id="lottie-bg"></div>
+    </div>
+    <div id="wrapper">
+        <div class="container">
+            <div class="logo-container">
+                <div id="lottie"></div>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li>Projekte</li>
+                    <li>Leistungen</li>
+                    <li>Über uns</li>
+                </ul>
+            </div>
+            <div class="contact">
+                <div class="contact-btn">Kontakt</div>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Your next</h1>
+            <h1>digital level.</h1>
+            <p>Gemeinsam mit Dir entwickeln wir wegweisende Lösungen in den Bereichen</p>
+            <p>Business Innovation und Growth Marketing. Lass uns reden!</p>
+            <div class="contact-btn inverted">Request a call</div>
+        </div>
+    </div>
+
+
+    <script>
+
+        window.onload = () => {
+            var animation = bodymovin.loadAnimation({
+            container: document.getElementById('lottie'), // Required
+            path: 'logo.json', // Required
+            renderer: 'svg', // Required
+            loop: true, // Optional
+            autoplay: false, // Optional
+        })
+
+        var animationBG = bodymovin.loadAnimation({
+            container: document.getElementById('lottie-bg'), // Required
+            path: 'bg.json', // Required
+            renderer: 'svg', // Required
+            loop: false, // Optional
+            autoplay: true, // Optional
+            rendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice',
+
             }
-          }
+        })
+
+        animation.setSpeed(1.5)
+        animationBG.addEventListener("enterFrame", () => {
+            if(animationBG.currentFrame > 100){
+                document.getElementById("wrapper").style.opacity = "1";
+                // document.getElementById("wrapper").style.transform = "translatey(0px)";
+                
+            }
+            console.log(animationBG.currentFrame)
         });
-      }
+        animationBG.addEventListener("complete", ()=>{
+            animation.play();
+        })
+        }
+
     </script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhEyk6Xkep-4_Hjh7K24FMy35of5Pu4a8&libraries=places&callback=initAutocomplete&language=de&region=DE"
-      async
-      defer
-    ></script>
-    <script type="text/javascript">
-      function noenter() {
-        return !(window.event && window.event.keyCode == 13);
-      }
-    </script>
-  </body>
+</body>
+
 </html>
