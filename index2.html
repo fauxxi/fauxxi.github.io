@@ -238,7 +238,7 @@
 
         var animation = bodymovin.loadAnimation({
           container: document.getElementById('lottie'), // Required
-          path: 'logo.json', // Required
+          path: 'logo2.json', // Required
           renderer: 'svg', // Required
           loop: true, // Optional
           autoplay: false, // Optional
@@ -289,7 +289,7 @@
           onComplete: test,
         });
 
-        animation.setSpeed(1.5);
+        animation.setSpeed(1);
         animationBG.addEventListener('enterFrame', () => {
           if (animationBG.currentFrame > 100) {
             document.getElementById('wrapper').style.opacity = '1';
