@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.6.10/lottie.js"
+      type="text/javascript"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <title>Advalyze</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: 'Open Sans', sans-serif;
+      }
+
+      #bg {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: #fff;
+      }
+
+      #lottie-bg {
+        height: 100vh;
+        width: 100vw;
+      }
+
+      .logo-container {
+        position: relative;
+        cursor: pointer;
+      }
+
+      #lottie {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: 0px;
+        left: 0px;
+      }
+
+      #wrapper {
+        width: 90%;
+        margin: 0 auto;
+        padding-left: 20px;
+        padding-right: 20px;
+        opacity: 0;
+        transition: all 350ms ease;
+        /* transform: translateY(20px); */
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-between;
+        height: 13vh;
+      }
+
+      ul {
+        list-style: none;
+        margin-top: 10px;
+      }
+
+      ul li {
+        display: inline-block;
+        cursor: pointer;
+        padding: 10px;
+        padding-bottom: 2px;
+        margin: 10px;
+        transition: all 200ms ease;
+      }
+
+      ul li:hover {
+        border-bottom: 2px solid black;
+      }
+
+      .contact {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+      }
+
+      .contact-btn {
+        cursor: pointer;
+        padding: 7px 30px 7px 30px;
+        max-width: 200px;
+        text-align: center;
+        border-radius: 30px;
+        border: 2.5px solid black;
+        transition: all 200ms ease;
+        font-weight: bold;
+      }
+
+      .contact-btn:hover {
+        background: #000;
+        color: #fff;
+      }
+
+      .inverted {
+        background: #000;
+        transition: all 200ms ease;
+        color: #fff;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .inverted:hover {
+        color: #000;
+        background: transparent;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+        height: 87vh;
+      }
+
+      h1 {
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+        font-size: 50pt;
+      }
+
+      h1:first-child {
+      margin-top: -50px;
+      margin-bottom: 40px;
+    }
+
+      p {
+        margin-bottom: 30px;
+      }
+
+      p:first-of-type {
+        margin-bottom: -15px;
+        margin-top: -20px;
+      }
+
+      #copy,
+      #copy-btn {
+        opacity: 0;
+        transition: all 350ms ease;
+      }
+
+      #copy-btn {
+        transform: translateY(20px) translateX(-50%);
+      }
+
+      #arrow{
+          position:fixed;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+          width: 50px;
+          height: 50px;
+          border: 2px solid black;
+        font-size: 200%;
+        border-radius: 50%;
+        transition: all 250ms ease;
+      }
+      #arrow::after{
+        content: "1";
+        position:absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      #arrow:hover{
+        cursor: pointer;
+        background: #000;
+        color: #fff;
+      }
+
+      a{
+        text-decoration: none;
+        color: inherit;
+      }
+    </style>
+  </head>
+
+  <body style="margin: 0px; height: 100%; width: 100%; padding: 0;">
+    <div id="bg">
+      <div id="lottie-bg"></div>
+    </div>
+    <div id="wrapper">
+      <div class="container">
+        <div class="logo-container">
+          <div id="lottie"></div>
+        </div>
+        <div class="nav">
+          <ul>
+            <li>Projekte</li>
+            <li>Leistungen</li>
+            <li>Über uns</li>
+          </ul>
+        </div>
+        <div class="contact">
+          <div class="contact-btn">Kontakt</div>
+        </div>
+      </div>
+      <div class="content">
+        <div id="headline">
+            <div id="scene">
+              <h1 id="h1-1" data-depth="0.5"></h1>
+            </div>
+            <div id="scene2">
+              <h1 id="h1-2" data-depth="0.25"></h1>
+            </div>
+          </div>
+        <div id="copy">
+          <p>
+            Gemeinsam mit Dir entwickeln wir wegweisende Lösungen in den
+            Bereichen
+          </p>
+          <p>Business Innovation und Growth Marketing. Lass uns reden!</p>
+        </div>
+        <div id="copy-btn" class="contact-btn inverted">Request a call</div>
+      </div>
+      <a href="/index.html"><div id="arrow"></div></a>
+    </div>
+
+    <script>
+      window.onload = () => {
+        
+
+        var animation = bodymovin.loadAnimation({
+          container: document.getElementById('lottie'), // Required
+          path: 'logo.json', // Required
+          renderer: 'svg', // Required
+          loop: true, // Optional
+          autoplay: false, // Optional
+        });
+
+        var animationBG = bodymovin.loadAnimation({
+          container: document.getElementById('lottie-bg'), // Required
+          path: 'bg2.json', // Required
+          renderer: 'svg', // Required
+          loop: false, // Optional
+          autoplay: false, // Optional
+          rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice',
+          },
+        });
+        
+        animationBG.addEventListener("data_ready", ()=>{
+          console.log("READY");
+          
+          animationBG.play();
+
+          var headline = document.getElementById("scene");
+        var headline2 = document.getElementById("scene2");
+        var parallaxInstance = new Parallax(headline);
+        var parallaxInstance2 = new Parallax(headline2);
+
+          var typed = new Typed('#h1-1', {
+          strings: ['Your next'],
+          showCursor: false,
+          startDelay: 2300,
+          typeSpeed: 30,
+        });
+
+        var test = () => {
+          document.getElementById('copy').style.opacity = '1';
+          setTimeout(() => {
+            document.getElementById('copy-btn').style.opacity = '1';
+            document.getElementById('copy-btn').style.transform =
+              'translateY(0) translateX(-50%)';
+          }, 250);
+        };
+
+        var typed1 = new Typed('#h1-2', {
+          strings: ['digital level.'],
+          showCursor: false,
+          startDelay: 2630,
+          typeSpeed: 30,
+          onComplete: test,
+        });
+
+        animation.setSpeed(1.5);
+        animationBG.addEventListener('enterFrame', () => {
+          if (animationBG.currentFrame > 100) {
+            document.getElementById('wrapper').style.opacity = '1';
+          }
+        });
+        animationBG.addEventListener('complete', () => {
+          animation.play();
+        });
+        })
+
+        
+      };
+    </script>
+  </body>
+</html>
