@@ -42,33 +42,32 @@
 </head>
 
 <body style="margin: 0px; height: 100%; width: 100%; padding: 0;">
-  <!-- <div id="bg">
+  <div id="bg">
     <div id="lottie-bg"></div>
-  </div> -->
+  </div>
   
-  <h1>Nothing to see here...</h1>
 
   <script>
     window.onload = () => {
 
 
-      // var animationBG = bodymovin.loadAnimation({
-      //   container: document.getElementById('lottie-bg'), // Required
-      //   path: 'bg.json', // Required
-      //   renderer: 'svg', // Required
-      //   loop: false, // Optional
-      //   autoplay: false, // Optional
-      //   rendererSettings: {
-      //     preserveAspectRatio: 'xMidYMid slice',
-      //   },
-      // });
+      var animationBG = bodymovin.loadAnimation({
+        container: document.getElementById('lottie-bg'), // Required
+        path: 'bg.json', // Required
+        renderer: 'svg', // Required
+        loop: false, // Optional
+        autoplay: false, // Optional
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid slice',
+        },
+      });
 
-      // animationBG.addEventListener("data_ready", () => {
-      //   console.log("READY");
+      animationBG.addEventListener("data_ready", () => {
+        console.log("READY");
 
-      //   animationBG.play();
+        animationBG.play();
 
-      // });
+      });
 
 
     };

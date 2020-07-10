@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+
+<head>
+  <script type="text/javascript">
+    var _iub = _iub || [];
+    _iub.csConfiguration = {
+      lang: "en", //to localize the cookie banner in an unsupported language (like Polish), set lang: "pl" 
+      siteId: 896537, //use your siteId
+      cookiePolicyId: 8207462, //use your cookiePolicyId
+      //cookiePolicyUrl: "https://...", //cookie-less page containing the cookie policy in an unsupported language (like Polish), see "Localize the cookie banner in an unsupported language"
+      consentOnScroll: false, //avoid consent to be given when the user scrolls the page
+      enableCMP: true, //enable IAB Transparency and Consent Framework
+      perPurposeConsent: true, //enable per-category consent
+      banner: {
+        position: "float-top-center",
+        acceptButtonDisplay: true,
+        customizeButtonDisplay: true,
+      },
+
+      i18n: {
+        //list of all editable components/strings
+        en: {
+          banner: {
+            title: 'Notice',
+          }
+        }
+      }
+    };
+  </script>
+  <script type="text/javascript" src="//cdn.iubenda.com/cs/tcf/stub.js"></script>
+  <!-- IAB Transparency and Consent Framework -->
+  <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+</head>
+
+<body>
+  <header>
+    <div class="wrapper">
+      <h1>iubenda Cookie Solution</h1>
+      <p>i18n configuration</p>
+    </div>
+  </header>
+
+  <section class="wrapper">
+
+    <p>In this demo, we show you how to edit/translate the texts of any Cookie Solution component via the i18n
+      JavaScript library.</p>
+
+    <h4>Customize the texts of supported languages</h4>
+
+    <p>Inside the <code>i18n</code> code section, you'll find a list of all editable components/strings you can use as a
+      reference for your edits and localizations. In fact, aside from just localization, you can also use
+      <code>i18n</code> to customize the texts of supported languages (such as English).</p>
+
+    <h4>Localize the cookie banner in an unsupported language</h4>
+
+    <p>If you want to translate the cookie banner in an unsupported language (e.g. Polish), you'll have to define:</p>
+
+    <ul>
+      <li>the <code>i18n</code> object with <strong>all</strong> the strings – see the code under
+        <em>"<strong>some</strong> sample strings translated into an unsupported language (Polish)"</em></li>
+    </ul>
+
+    <p>and a couple of other parameters:</p>
+
+    <ul>
+      <li><code>lang: "pl"</code>, the language in which to display the content of the cookie banner</li>
+      <li><code>cookiePolicyUrl: "..."</code>, the cookie policy's URL linked within the banner. In this case, you'll
+        have to provide a cookie-less page containing the cookie policy in Polish</li>
+    </ul>
+
+    <div class="note">
+      <ul>
+        <li>Remember to use your own credentials from <a href="https://www.iubenda.com/en/dashboard"
+            target="_blank">your iubenda account</a></li>
+        <li>This is a sample for purely demonstrative purposes, <strong>no consents are saved</strong> (result of
+          <code>_iub.csConfiguration.skipSaveConsent = true</code>). Just refresh the page to make the cookie banner
+          reappear.</li>
+      </ul>
+    </div>
+
+    <h4>Helpful guides</h4>
+    <ul class="guides">
+      <li><a href="https://www.iubenda.com/en/help/1177" target="_blank">Cookie Solution - Getting Started</a></li>
+      <li><a href="https://www.iubenda.com/en/help/3831" target="_blank">How to Customize the Look and Behavior of the
+          Cookie Banner (Beginner's Guide)</a></li>
+      <li><a href="https://www.iubenda.com/en/help/1205" target="_blank">How to Configure Your Cookie Solution (Advanced
+          Guide)</a></li>
+      <li><a href="https://www.iubenda.com/en/help/3081" target="_blank">Introduction to the Prior Blocking of
+          Cookies</a></li>
+    </ul>
+
+  </section>
+</body>
+
+</html>
